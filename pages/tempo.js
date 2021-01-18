@@ -11,8 +11,6 @@ function Tempo(props) {
 }
 
 export async function getStaticProps() {
-  await delay(5000);
-
   const staticDate = new Date();
   const staticDateString = staticDate.toUTCString();
 
@@ -20,9 +18,8 @@ export async function getStaticProps() {
     props: {
       staticDateString,
     },
+    revalidate: 1,
   };
 }
-
-const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 export default Tempo;
